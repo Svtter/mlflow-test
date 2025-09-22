@@ -1,0 +1,22 @@
+FROM python:3.9-slim
+
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y \
+    curl \
+    wget \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY requirements-minimal.txt .
+RUN pip install --no-cache-dir -r requirements-minimal.txt
+
+RUN mkdir -p /mlflow /notebooks /models
+
+COPY start.sh .
+COPY jupyter_notebook_config.py /etc/jupyter/
+RUN chmod +x start.sh
+
+EXPOSE 8888
+EXPOSE 5000
+
+CMD ["./start.sh"]
