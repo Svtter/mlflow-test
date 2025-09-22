@@ -16,7 +16,7 @@ c.NotebookApp.notebook_dir = '/notebooks'
 # Jupyter Server Proxy 配置
 c.ServerProxy.servers = {
     'mlflow': {
-        'port': 5001,
+        'port': 5000,
         'absolute_url': True,
         'launcher_entry': {
             'title': 'MLflow UI',

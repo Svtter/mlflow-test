@@ -1,0 +1,30 @@
+# Docker Configuration
+# This file defines the Docker image names and build configurations for consistent deployment
+
+# Primary Docker image name
+DOCKER_IMAGE_NAME=mlflow-pytorch-proxy
+
+# Minimal Docker image name (for lightweight deployments)
+DOCKER_MINIMAL_IMAGE_NAME=mlflow-pytorch-minimal
+
+# Build configuration
+DOCKERFILE=Dockerfile
+DOCKERFILE_MINIMAL=Dockerfile.minimal
+
+# Container name when running
+CONTAINER_NAME=mlflow-test
+
+# Port configurations
+JUPYTER_PORT=8888
+MLFLOW_PORT=5000
+MLFLOW_CONTAINER_PORT=5001
+
+# Volume mount paths
+NOTEBOOKS_MOUNT=$(pwd)/notebooks:/notebooks
+MLFLOW_MOUNT=$(pwd)/mlruns:/mlflow
+MODELS_MOUNT=$(pwd)/models:/models
+
+# Build arguments
+PYTHON_VERSION=3.9
+CUDA_VERSION=11.7
+PYTORCH_VERSION=2.0.1
